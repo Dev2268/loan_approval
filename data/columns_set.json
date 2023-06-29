@@ -1,0 +1,16 @@
+{
+	"data_columns": {
+		"Gender": null,
+		"Married": null,
+		"Education": null,
+		"Self_Employed": null,
+		"ApplicantIncome": null,
+		"CoapplicantIncome": null,
+		"LoanAmount": null,
+		"Loan_Amount_Term": null,
+		"Credit_History": null,
+		"Property_Area": null,
+		"Dependents": null
+		
+	}
+}
