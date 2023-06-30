@@ -70,14 +70,19 @@ def predict():
 				dtype = float
 			)
             print(df.dtypes)
+            s=""
+            if(Gender == "1" ):s="Mr"
+            else:
+                 if Married == "1":s="Ms"
+                 else: s="Mrs"  
             result = ValuePredictor(data = df)
             j=0
             for i in result:    
                   print(i)
                   if int(i)==1:
                         j+=1
-            if j >= 2:prediction = 'Dear Mr/Mrs/Ms {name}, your loan is approved!'.format(name = name)
-            else:prediction = 'Sorry Mr/Mrs/Ms {name}, your loan is rejected!'.format(name = name)
+            if j >= 2:prediction = 'Dear {s} {name}, your loan is approved!'.format(s=s,name = name)
+            else:prediction = 'Sorry {s} {name}, your loan is rejected!'.format(s=s,name = name)
             print(prediction)
             return render_template('prediction.html',prediction=prediction)
             
