@@ -32,6 +32,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+
 @app.route('/predict', methods=['POST'])
 def predict():
 	if request.method == 'POST':	
@@ -53,22 +54,6 @@ def predict():
             with open(schema_dir, 'r') as f:
                 cols =  json.loads(f.read())
             schema_cols=cols['data_columns']
-            # try:
-            #       col = ('Dependents_' + str(Dependents))
-            #       if col in schema_cols.keys():
-            #          print(col)
-            #          schema_cols[col]=1
-            #       else:
-            #             pass   
-            # except:
-            #       pass
-            # try:
-            #       col = ('Property_Area_' + str(property_area))
-            #       if col in schema_cols.keys():
-            #             schema_cols[col]=1
-            #       else:
-            #             pass
-            # except:pass
             schema_cols['Gender'] = Gender
             schema_cols['Married'] = Married
             schema_cols['Education'] = Education
@@ -96,6 +81,9 @@ def predict():
             print(prediction)
             return render_template('prediction.html',prediction=prediction)
             
+@app.route('/emi_calculator')
+def emi():
+    return render_template('emi.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

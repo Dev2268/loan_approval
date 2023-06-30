@@ -1,0 +1,264 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="EMI calculator and Loan-limit calculator written in Javascript" />
+		<meta name="author" content="LoanEval" />
+		<meta name="keywords" content="Calculate Mortgage,EMI calculator,EMI,Loan Calculator,CI,Compound Interest,Installment,interest,bank" />
+		<meta name="robots" content="index,follow" />
+		<meta name="google-site-verification" content="ADON0Mt69_NLIwnR7i1eCDEJyaYcERI517r3HbOKyNg" />
+		<title>Loan Calculators</title>
+		<link rel="stylesheet" href="../static/css/emi.css">
+		<script type="text/javascript" src="../static/js/emi.js"></script>
+	</head>
+	<body>
+		<h1>Loan Calculators</h1>
+		<h2>EMI Calculator</h2>
+		<form name="f" method="post" action="/" onSubmit="return CalcEMI();">
+			<table id="tbl_emi">
+				<tr>
+					<td style="text-align: right"><label for="t_principal">Loan amount</label> = </td>
+					<td style="text-align: left">
+						&nbsp;&#x20b9;<input name="t_principal" type="text" class="currency" id="t_principal" size="14" maxlength="10"></td>
+				</tr>
+				<tr>
+					<td style="text-align: right"><label for="t_term">Term of Loan</label> = </td>
+					<td style="text-align: left"><input name="t_term" type="text" id="t_term" size="5" maxlength="4">
+						<select name="sel_units" class="sml_menu" id="sel_units">
+							<option value="1" selected>years</option>
+							<option value="12">months</option></select></td>
+				</tr>
+
+				<tr>
+					<td style="text-align: right"><label for="t_interest">Interest Rate</label>	= </td>
+					<td style="text-align: left">
+						<input name="t_interest" type="text" id="t_interest" size="6" maxlength="6">%</td>
+				</tr>
+
+				<tr>
+					<td style="text-align: right"><label for="sel_compounding">Compounding:</label> </td>
+					<td style="text-align: left">
+						<select name="sel_compounding" id="sel_compounding">
+							<option value="1">Yearly</option>
+							<option value="2">Half yearly</option>
+							<option value="4">Quarterly</option>
+							<option value="12" selected>Monthly</option>
+							<option value="365.25">Daily</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						Mode: <label><input name="AdvancedMode" type="radio" id="AdvancedMode_No" onClick="SwitchToSimpleMode();" value="yes" checked>Simple</label>
+						<label><input name="AdvancedMode" type="radio"  id="AdvancedMode_Yes" onClick="SwitchToAdvMode();" value="no">Detailed</label>
+						<br>
+						<div id="div_emistart" style="visibility:hidden;height:0px; text-align: left;">
+							<div id="div_dateofissue" style="margin-top:5px;">
+								Date of issue:
+								<select name="iMonth" id="iMonth">
+									<option value="0">&nbsp;</option>
+									<option value="1" selected>Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option>
+									<option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option>
+									<option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+								</select>
+								<select name="iDay" id="iDay">
+									<option value="0">&nbsp;</option>
+									<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+									<option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+									<option value="9">9</option><option value="10">10</option><option value="11">11</option>
+									<option value="12">12</option>  <option value="13">13</option>   <option value="14">14</option><option value="15">15</option>
+									<option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
+									<option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>
+									<option value="24">24</option><option value="25">25</option><option value="26" selected>26</option><option value="27">27</option>
+									<option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+								</select> <input name="txtYear" type="text" value="2013" size="4" maxlength="4"></div>
+							<div id="div_repaymentstart" style="margin-top:5px;margin-bottom:5px;">
+								Repayment starts on <br>
+								&nbsp;&nbsp;<label><input name="RepaymentStart" type="radio" id="RepaymentStart_sameday" value="sameday">Date of issue</label><br>
+								&nbsp;&nbsp;<label title="If repayment starts 1st day of next month, last few installments and loan closure will be appoximated">
+									<input name="RepaymentStart" type="radio" id="RepaymentStart_day1next" value="day1next" checked>1st day on next month</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr style="text-align: right; vertical-align: middle;">
+					<td colspan="2" style="text-align: center;">
+						<input name="ClearForm" type="button" class="button" onClick="ClearF();" value="Clear">  
+						&nbsp;&nbsp;&nbsp;
+						<input name="SubmitEMI" type="submit" class="button" style="cursor: pointer;" value="Calculate EMI &gt;&gt;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: right;">Monthy Installment:
+						&#x20b9;<input name="t_emi" type="text" class="answer" id="t_emi" size="12" maxlength="10" readonly><br>
+						<div id="div_totamount" style="visibility:hidden; height:0px; text-align: right;">
+							Total interest: &#x20b9;<input name="t_sumint" type="text" class="answer" id="t_sumint" size="12" maxlength="10" readonly><br>
+							Total amount payable: &#x20b9;<input name="t_emitot" type="text" class="answer" id="t_emitot" size="12" maxlength="10" readonly>
+						</div>
+					</td></tr>
+			</table>
+			<div id="div_breakup" style="visibility:hidden;height:0px;"><br>
+				<span title="EMI schedule, break-up of Principal and Interest in EMIs">Amortization Schedule</span>:<br>
+				<textarea name="txtBreakup" cols="70" rows="20" id="txtBreakup" title="Double-click on this text area to convert this to CSV (you can then import the values into a spreadsheet)" lang="en" onDblClick="SwitchToCSVMode();" readonly></textarea>
+			</div>
+		</form>
+		<br>
+		<hr style="width: 50%">
+		<br>
+		<h2>Loan Limit Calculator</h2>
+		<form name="fl" method="post" action="/" onSubmit="return CalcLL();">
+			<table class="content" id="tbl_lim">
+				<tr class="tblhd">
+					<th> Sources of<br>Income</th>
+					<th colspan="2">Net Income from each source </th>
+					<th>Fraction of this<br>income considered </th>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Source #1 : </td>
+					<td colspan="2" style="text-align: center;"><div>&#x20b9;<input name="soi_1" type="text" class="currency" size="14" maxlength="10">      per
+							<select name="iu1" class="sml_menu" id="iu1">
+								<option value="1">year</option>
+								<option value="12" selected>month</option>
+							</select></div></td>
+					<td style="text-align: center;">
+						<input name="pc1" type="text" id="pc1" value="100" size="5" maxlength="5" class="currency">%</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Source  #2 :</td>
+					<td colspan="2" style="text-align: center;"><div>&#x20b9;<input name="soi_2" type="text" class="currency" id="soi_2" size="14" maxlength="10">      
+							per
+							<select name="iu2" class="sml_menu" id="iu2">
+								<option value="1">year</option>
+								<option value="12" selected>month</option>
+							</select></div></td>
+					<td style="text-align: center;">
+						<input name="pc2" type="text" id="pc2" value="100" size="5" maxlength="5" class="currency">
+						%</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Source #3 :</td>
+					<td colspan="2" style="text-align: center;"><div>&#x20b9;<input name="soi_3" type="text" class="currency" id="soi_3" size="14" maxlength="10">      
+							per
+							<select name="iu3" class="sml_menu" id="iu3">
+								<option value="1">year</option>
+								<option value="12" selected>month</option>
+							</select></div></td>
+					<td style="text-align: center;">
+						<input name="pc3" type="text" id="pc3" value="100" size="5" maxlength="5" class="currency">%</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Source #4 :</td>
+					<td colspan="2" style="text-align: center;"><div>&#x20b9;<input name="soi_4" type="text" class="currency" id="soi_4" size="14" maxlength="10">      
+							per
+							<select name="iu4" class="sml_menu" id="iu4">
+								<option value="1">year</option>
+								<option value="12" selected>month</option>
+							</select></div></td>
+					<td style="text-align: center;">
+						<input name="pc4" type="text" id="pc4" value="100" size="5" maxlength="5" class="currency">%</td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">Source #5 :</td>
+					<td colspan="2" style="text-align: center;"><div>&#x20b9;<input name="soi_5" type="text" class="currency" id="soi_5" size="14" maxlength="10">      
+							per
+							<select name="iu5" class="sml_menu" id="iu5">
+								<option value="1">year</option>
+								<option value="12" selected>month</option>
+							</select></div></td>
+					<td style="text-align: center;">
+						<input name="pc5" type="text" id="pc5" value="100" size="5" maxlength="5" class="currency">%</td>
+				</tr>
+				<tr style="text-align: right">
+					<td colspan="4" style="text-align: center;"><label for="llperiod">Income calculated for period of:</label>
+						<input name="llperiod" type="text" id="llperiod" class="currency" value="60" size="3" maxlength="2">
+						<select name="period_units" class="sml_menu" id="period_units">
+							<option value="1">years</option>
+							<option value="12" selected>months</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;"><label for="fl_t_interest">Interest Rate</label> :      
+						<input name="t_interest" type="text" class="currency" id="fl_t_interest" value="11" size="6" maxlength="6">%</td>
+					<td colspan="2" style="text-align: center;"><label for="fl_sel_compounding">Compounding</label>: <select name="sel_compounding" id="fl_sel_compounding">
+							<option value="1">Yearly</option>
+							<option value="2">Half yearly</option>
+							<option value="4">Quarterly</option>
+							<option value="12" selected>Monthly</option>
+							<option value="365.25">Daily</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+						<label for="fl_t_term">Term of Loan</label>: <input name="t_term" type="text" class="currency" id="fl_t_term" value="15" size="4" maxlength="4"><select name="sel_units" class="sml_menu" id="fl_sel_units">
+							<option value="1" selected>years</option>
+							<option value="12">months</option>
+						</select></td>
+					<td colspan="2" style="text-align: center; vertical-align: middle;"><label for="emibynmi"><abbr title="Equated Monthly Installment">EMI</abbr>/<abbr title="Net Monthly Income">NMI</abbr> ratio:
+							<input name="emibynmi" type="text" class="currency" id="emibynmi" value="57.5" size="5" maxlength="6">
+						</label>% </td>
+				</tr>
+
+				<tr>
+					<td colspan="4" style="text-align: center;">
+						<input name="reset" type="reset" class="button" onClick="return confirm('This will reset the form');" value="Clear"> 
+						&nbsp;&nbsp;
+						<input name="SubmitLL" type="submit" class="button" id="SubmitLL" style="cursor: pointer;" onClick="return CalcLL();" value="Calculate Loan Limit &gt;&gt;">
+						&nbsp;&nbsp;&nbsp;&nbsp;&#x20b9;<input name="loanlimit" type="text" id="loanlimit" size="15" maxlength="15" class="answer" readonly></td>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: left"><div id="fldetails">Calculation details:<br>
+							<textarea name="report" cols="45" rows="7" style="width:90%;" lang="en" readonly></textarea></div></td>
+				</tr>
+			</table>
+		</form>
+		<hr style="width: 50%">
+	</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="../static/css/emi.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <h2>EMI Calculator</h2>
+            <div class="input-group">
+                <div class="input">
+                    <input type="text" id="loan-amount" placeholder="Loan Amount(Rs.)">
+                </div>
+                <div class="input">
+                    <input type="text" id="loan-tenure" placeholder="Loan Tenure(Year.)">
+                </div>
+                <div class="input">
+                    <input type="text" id="loan-interest" placeholder="Interest Rate(%)">
+                </div>
+            </div>
+            <div class="button">
+                <button id="calcbtn" onclick="calculate()">Calculate</button>
+            </div>
+            <p class="error">this is error</p>
+            <div class="result">
+                <canvas id="loanChart"></canvas>
+                <ul>
+                    <li>Monthly Loan EMI: <span id="loanemi"></span></li>
+                    <li>Principle Amount: <span id="loanprinciple"></span></li>
+                    <li>Loan On Interest: <span id="loaninterest"></span></li>
+                    <li>Total Amount To Be Paid: <span id="loantotal"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/emi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
