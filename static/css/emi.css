@@ -69,13 +69,14 @@ hr {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #3598DB;
+    background-color: #f8f8f8;
     font-size: 1.2rem;
     font-family: 'Poppins',sans-serif;
+    margin-top: 15px;
 }
 .main{
     width: 350px;
-    background-color: #fff;
+    background-color: #f1f8fcfd;
     padding: 30px 30px;
     border-radius: 10px;
 }
@@ -90,7 +91,7 @@ h2{
     width: 200px;
     height: 30px;
     border-radius: 5px;
-    border: 2px solid #ccc;
+    border: 2px solid #fff;
     outline: none;
     margin-top: 1rem;
     font-size: 1.2rem;
@@ -100,7 +101,7 @@ h2{
 }
 .main button{
     border: none;
-    background-color: #3598DB;
+    background-color: #6dabe4;
     border-radius: 5px;
     padding: 15px 15px;
     color: #fff;
@@ -129,8 +130,8 @@ h2{
     margin-top: 1rem;
 }
 ul{
-    background-color: #d6f0fd;
-    color: #44bef4;
+    background-color: #f1f8fcfd;
+    color: #6dabe4;
     padding: 10px 15px;
     border-radius: 5px;
 }
