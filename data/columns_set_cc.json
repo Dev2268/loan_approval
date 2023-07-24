@@ -1,0 +1,17 @@
+{
+	"data_columns": {
+		"Gender": null,
+		"Has_a_car": null,
+		"Has_a_property": null,
+		"Children_count": null,
+		"Income": null,
+		"Employmentstatus": null,
+		"Educationlevel": null,
+		"Maritalstatus": null,
+		"Dwelling": null,
+		"Has_a_mobilephone": null,
+		"Job_title": null,
+        "Familymembercount":null
+		
+	}
+}

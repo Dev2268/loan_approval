@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Loan Approval</h2>
+                        <h2 class="form-title">Loan Eligibility</h2>
                         <form action="/predict" method="POST" class="register-form" id="register-form">
                             <h3>Identity</h3>
                             <!-- Name -->
@@ -86,24 +86,24 @@
                             </div>
                             <!-- Applicant Income per Month -->
                             <div class="form-group">
-                                <label for="applicant_income"><i class="zmdi zmdi-money"></i></label>
-                                <input type="number" min="0" name="applicant_income" placeholder="Applicant Income per Month (USD)" required/>
+                                <label for="applicant_income"><i class="zmdi ">₹</i></label>
+                                <input type="number" min="0" name="applicant_income" placeholder="Applicant Income per Month " required/>
                             </div>
                             <!-- Co-Applicant Income per Month -->
                             <div class="form-group">
-                                <label for="coapplicant_income"><i class="zmdi zmdi-money"></i></label>
-                                <input type="number" min="0" name="coapplicant_income" placeholder="Co-Applicant Income per Month (USD)" required/>
+                                <label for="coapplicant_income"><i class="zmdi ">₹</i></label>
+                                <input type="number" min="0" name="coapplicant_income" placeholder="Co-Applicant Income per Month" required/>
                             </div>
                             <h3>Loan and Credit Description</h3>
                             <!-- Loan Amount -->
                             <div class="form-group">
-                                <label for="loan_amount"><i class="zmdi zmdi-money"></i></label>
-                                <input type="number" min="0" name="loan_amount" placeholder="Your Loan Amount (USD)" required/>
+                                <label for="loan_amount"><i class="zmdi ">₹</i></label>
+                                <input type="number" min="0" name="loan_amount" placeholder="Your Loan Amount" required/>
                             </div>
                             <!-- Loan Amount Term -->
                             <div class="form-group">
                                 <label for="loan_term"><i class="zmdi zmdi-calendar-check"></i></label>
-                                <input type="number" min="0" name="loan_term" placeholder="Your Loan Term (days)" required/>
+                                <input type="number" min="0" name="loan_term" placeholder="Your Loan Term (Month)" required/>
                             </div>
                             <!-- Credit History -->
                             <div class="form-group">
@@ -116,7 +116,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="label-agree-Term">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Check Status"/>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Loan Approval Prediction</title>
+    <title>LoanEval</title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="../static/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
@@ -17,8 +17,9 @@
 <body>
 
   <div class="topnav" id="myTopnav">
-    <a href="/" class="active">Home</a>
-    <a href="/emi_calculator">Emi Calculator</a>
+    <a href="/" class="active" onclick="selected()">Home</a>
+    <a href="/credit_card" onclick="selected()">Credi Card Approval</a>
+    <a href="/emi_calculator" onclick="selected()">Emi Calculator</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i>
         <div class="burger">
@@ -41,6 +42,26 @@
         x.className = "topnav";
       }
     }
+
+    // JavaScript to add 'selected' class to the clicked item
+   function selected(){
+    const navbarItems = document.querySelectorAll('.topnav a');
+
+    navbarItems.forEach(item => {
+      item.addEventListener('click', function(event) {
+        // Prevent the default link behavior
+        event.preventDefault();
+
+        // Remove 'selected' class from all items
+        navbarItems.forEach(item => {
+          item.classList.remove('selected');
+        });
+
+        // Add 'selected' class to the clicked item
+        this.classList.add('selected');
+      });
+    });
+   }
   </script>
 </body>
 </html>

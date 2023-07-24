@@ -264,7 +264,9 @@ body {
 
 .form-title {
   margin-bottom: 33px; }
-
+  .form-title-body {
+    font-size: large; }
+  
 .signup-image {
   margin-top: 45px; }
 
@@ -299,7 +301,7 @@ figure {
   text-align: center; }
 
 .term-service {
-  font-size: 13px;
+  font-size: 25px;
   color: #222; }
 
 .signup-form {
@@ -576,7 +578,8 @@ label.valid {
     padding: 0 30px; }
 
   .form-title {
-    text-align: center; } }
+    text-align: center; 
+     font-size: large;} }
 @media screen and (max-width: 400px) {
   .social-login {
     flex-direction: column;
