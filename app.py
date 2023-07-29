@@ -47,6 +47,9 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('home.html')
+@app.route('/documents')
+def documents():
+    return render_template('document.html')
 
 @app.route('/predicts')
 def predicts():
