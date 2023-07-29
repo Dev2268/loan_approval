@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="relative container mx-auto px-6 z-10 pt-12 lg:pt-40 pb-8 lg:pb-32">
+            <div class="max-w-3xl text-center mx-auto">
+                <h2 style="  display: flex;justify-content: center; padding-top:80px;  font-size: 50px;">Get Instant Loan Evaluation</h2>
+                    <p style=" display: flex;justify-content: space-around;margin-left:100px; font-size: 40px;">Predict your loan approval with ML models and apply in minutes.</p>
+                <div class="form-group form-button">
+                    <a href="/predicts" name="signup" id="signup" class="form-submit" style="text-decoration: none;  margin-left:100px; margin-bottom:80px;">Check Eligibility</a>
+                </div>
+            </div>
+            <h2 style="  display: flex;justify-content: center;font-size: 50px;">Services</h2>
+            <div>
+                <div>
+                    <div>
+                        <a href="/predicts" style="text-decoration: none;"><p style="margin-left:100px; margin-right:100px;font-size: 40px; color:#000;">Know Your Eligibility</p></a>
+                        <p  style="margin-left:100px; margin-right:100px;font-size: 20px;">We create a tailored ML model using decision tree, random forest, and logistic regression to accurately predict loan eligibilty based on user input details such as name, age, gender, income, marital status, number of dependents, loan amount, time period, and credit history. We will also apply ensemble methods to generate the final output. </p>
+                    </div>
+                </div>  
+                <div>
+                    <div>
+                        <a href="/emi_calculator" style="text-decoration: none;"><p style="margin-left:100px; margin-right:100px;font-size: 40px; color:#000;">Calculate Your Montly EMI</p></a>
+                        <p  style="margin-left:100px; margin-right:100px;font-size: 20px;"> Our EMI Calculator Service is just one example of our dedication to providing seamless and customer-centric solutions. We prioritize accuracy, transparency, and ease of use to ensure that you have a smooth and satisfying experience while planning your financial journey.</p>
+                    </div>
+                </div>  
+                <div>
+                    <div>
+                        <a href="/emi_calculator" style="text-decoration: none;"><p style="margin-left:100px; margin-right:100px;font-size: 40px; color:#000;">Easy Loan Apply</p></a>
+                        <p  style="margin-left:100px; margin-right:100px;font-size: 20px;">Your one-stop solution for accessing comprehensive information on different bank loan criteria and interest rates all in a single place. And make financial decisions about your future without the hassle of visiting multiple websites or contacting numerous banks.</p>
+                    </div>
+                </div>  
+                <div>
+                    <div style="padding-bottom:100px;">
+                        <a href="/emi_calculator" style="text-decoration: none;"><p style="margin-left:100px; margin-right:100px;font-size: 40px; color:#000;">Documents for Loan Application</p></a>
+                        <p  style="margin-left:100px; margin-right:100px;font-size: 20px;"> For streamline the documentation process and ensure a hassle-free experience for our valued customers.</p>
+                    </div>
+                </div>  
+            </div>
+        </div>
+ </div>
+    </div>
+</section>
+{% endblock %}
