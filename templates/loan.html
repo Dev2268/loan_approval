@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/loan.css">
+<section>
+    <div class="container" style="width:80%";>
+        <h2 style="  display: flex;justify-content: center; padding-top:80px;  font-size: 50px;">Bank Loan Details and Criteria </h2>
+        <div style="display:flex;justify-content: space-between;">
+            <p style="margin-left:50px;margin-right:50px;padding-left:50px;font-size:40px;background-color: #efeded;width:100%;"><a style="text-decoration:none;color:#000;" href='/loan?name=Personal' >Personal Loan</a></p>
+        </div>
+        {% if content and name=="Personal" %}
+                <div class="table-container" style="margin-top:20px">
+                    {{ content | safe }} {# Use the 'safe' filter to render HTML content as raw HTML #}
+                </div> 
+            {% endif %}
+        <div style="display:flex;justify-content: space-between;">
+            <p style="margin-left:50px;margin-right:50px;padding-left:50px;font-size:40px;background-color: #efeded;width:100%;"><a style="text-decoration:none;color:#000;" href='/loan?name=Home' >Home Loan</a></p>
+        </div>
+        {% if content and name=="Home" %}
+                <div class="table-container" style="margin-top:20px">
+                    {{ content | safe }} {# Use the 'safe' filter to render HTML content as raw HTML #}
+                </div> 
+        {% endif %}
+        <div style="display:flex;justify-content: space-between;">
+            <p style="margin-left:50px;margin-right:50px;padding-left:50px;font-size:40px;background-color: #efeded;width:100%;"><a style="text-decoration:none;color:#000;" href='/loan?name=Educational' >Educational Loan</a></p>
+        </div>
+        {% if content and name=="Educational" %}
+                <div class="table-container" style="margin-top:20px">
+                    {{ content | safe }} {# Use the 'safe' filter to render HTML content as raw HTML #}
+                </div> 
+        {% endif %}
+        <div style="display:flex;justify-content: space-between;">
+            <p style="margin-left:50px;margin-right:50px;padding-left:50px;font-size:40px;background-color: #efeded;width:100%;"><a style="text-decoration:none;color:#000;" href='/loan?name=Car' >Car Loan</a></p>
+        </div>
+        {% if content and name=="Car" %}
+                <div class="table-container" style="margin-top:20px">
+                    {{ content | safe }} {# Use the 'safe' filter to render HTML content as raw HTML #}
+                </div> 
+        {% endif %}
+        <div style="padding-bottom:50px;"></div>
+    </div>
+</section>
+<script src="../static/js/loan.js"></script>
+{% endblock %}

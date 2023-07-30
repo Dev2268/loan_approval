@@ -519,7 +519,7 @@ label.valid {
 
 @media screen and (max-width: 1200px) {
   .container {
-    width: calc( 100% - 30px);
+    width: calc( 100% - 0px);
     max-width: 100%; } }
 @media screen and (min-width: 1024px) {
   .container {
